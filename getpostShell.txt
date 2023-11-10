@@ -1,0 +1,22 @@
+# Import your models
+from yourapp.models import Author, Evaluation, Question, Choice
+
+# Create an author
+author = Author.objects.create(name="John Doe")
+
+# Create an evaluation for the author
+evaluation = Evaluation.objects.create(eval_author=author, eval_name="Sample Evaluation", date_created="2023-11-09T12:00:00Z")
+
+# Create a question for the evaluation
+question = Question.objects.create(eval_form=evaluation, question_text="Sample Question 1")
+
+# Create choices for the question
+choice1 = Choice.objects.create(question=question, choice_text="Option A", answers=0)
+choice2 = Choice.objects.create(question=question, choice_text="Option B", answers=0)
+
+# Now, let's retrieve and display choices for the question
+question_choices = Choice.objects.filter(question=question)
+
+# Display choices
+for choice in question_choices:
+    print(f"- {choice.choice_text} ({choice.answers} answers)")
