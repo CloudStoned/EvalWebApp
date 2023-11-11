@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for eval in evaluations %}
+
+    <h2>{{ eval.eval_name }}</h2>
+    <p>Author: {{ eval.eval_author.name }}</p>
+    <p>Date Created: {{ eval.date_created}}</p>
+
+    <h2>Questions:</h2>
+
+    <ul>
+        <li>{{ eval.eval_question.question_text }}</li>
+        <ul>
+            <li>{{ eval.eval_choice.choice_text }} - Answers: {{ choice.answers }}</li>
+        </ul>
+    </ul>
+
+{% endfor %}
+
+
+{% endblock content %}

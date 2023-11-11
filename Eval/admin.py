@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Author, Evaluation, Question, Choice
+from .models import Author, Evaluation, Question, Choice, Evaldetail
 
 class EvaluationInLine(admin.TabularInline):
     model = Evaluation
@@ -15,3 +15,5 @@ class AuthorAdmin(admin.ModelAdmin):
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Evaldetail)
+

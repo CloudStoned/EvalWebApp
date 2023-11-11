@@ -28,3 +28,10 @@ class Choice(models.Model):
     
     def __str__(self):
         return f"{self.question} - {self.choice_text} - {self.answers}"
+    
+class Evaldetail(models.Model):
+    eval_author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    eval_model = models.ForeignKey(Evaluation, on_delete=models.CASCADE)
+    eval_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    eval_choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    

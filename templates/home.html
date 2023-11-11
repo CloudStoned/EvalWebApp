@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for eval in evaluations %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ eval.eval_author }}</a>
+            <small class="text-muted">{{ eval.eval_model.date_created|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'author-posts' eval.eval_author.name %}">
+            {{ eval.eval_model.eval_name }}</a></h2>
+    </div>
+</article>
+{% endfor %}
+
+
+{% endblock content %}
