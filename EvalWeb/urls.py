@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from Eval.views import (
-    EvaluationsListView,AuthorEvaluationsListView,EvaluationDetailView
-)
+from Eval.views import EvaluationsListView, AuthorEvaluationsListView
+
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

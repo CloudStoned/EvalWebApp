@@ -2,22 +2,25 @@
 
 {% block content %}
 
-{% for eval in evaluations %}
 
+{% for eval in evaluations %}
+    <h1>Evaluation Forms Created By {{eval.eval_author}}</h1>   
     <h2>{{ eval.eval_name }}</h2>
     <p>Author: {{ eval.eval_author.name }}</p>
-    <p>Date Created: {{ eval.date_created}}</p>
+    <p>Date Created: {{ eval.date_created }}</p>
 
-    <h2>Questions:</h2>
+    <h3>Questions and Choices: </h3>
 
-    <ul>
-        <li>{{ eval }}</li>
+    {% for question in eval.question_set.all %}
         <ul>
-            <li>{{ eval.eval_choice.choice_text }} - Answers: {{ choice.answers }}</li>
+            <li>{{ question.question_text }}</li>
+
+            {% for choice in question.choice_set.all %}
+                <li>{{ choice.choice_text }}</li>
+            {% endfor %}
         </ul>
-    </ul>
+    {% endfor %}
 
 {% endfor %}
-
 
 {% endblock content %}
