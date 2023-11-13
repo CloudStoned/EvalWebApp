@@ -1,0 +1,29 @@
+<!-- evaluation_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <ul>
+      {% for evaluation in object_list %}
+        <h2>{{ evaluation.eval_name }}</h2>
+        <form method="post" action="{% url 'answer-eval' evaluation.pk %}">
+          {% csrf_token %}
+          
+          {% for question in evaluation.question_set.all %}
+            <li>
+              <h3>{{ question.question_text }}</h3>
+              
+              {% for choice in question.choice_set.all %}
+                <label>
+                  <input type="radio" name="selected_choice" value="{{ choice.id }}" required>
+                  {{ choice.choice_text }}
+                </label>
+              {% endfor %}
+            </li>
+          {% endfor %}
+            <button type="submit" class="btn btn-primary">Submit Answers</button>
+        </form>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

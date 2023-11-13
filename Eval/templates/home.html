@@ -8,7 +8,7 @@
             <a class="mr-2" href="{% url 'author-posts' eval.eval_author.name %}">{{ eval.eval_author }}</a>
             <small class="text-muted">{{ eval.date_created|date:"F d, Y" }}</small>
         </div>
-        <h2><a class="article-title" href="#">
+        <h2><a class="article-title" href="{% url 'eval-detail' eval.id%}">
             {{ eval.eval_name }}</a></h2>
     </div>
 </article>

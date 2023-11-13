@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Author(models.Model):
     name = models.CharField(max_length=50)
@@ -28,4 +29,10 @@ class Choice(models.Model):
     
     def __str__(self):
         return f"{self.question} - {self.choice_text} - {self.answers}"
+
+class Answer(models.Model):
+    evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    selected_choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     

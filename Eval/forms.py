@@ -1,5 +1,7 @@
 from django import forms
-from . models import Author,Evaluation,Question,Choice
+from . models import (
+    Author,Evaluation,Question,Choice,Answer
+)
 
 class AuthorNameForm(forms.ModelForm):
     class Meta:
@@ -30,3 +32,8 @@ class ChoiceForm(forms.ModelForm):
             "choice_text",
             "answers"
         )
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['question', 'selected_choice']
