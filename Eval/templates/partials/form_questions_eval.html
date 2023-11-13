@@ -1,0 +1,17 @@
+<form hx-post="{% url 'create-questions' %}" hx-target = "#question-list" 
+    hx-swap="beforeend" hx-on="htmx:afterRequest: this.remove()" 
+    hx-trigger="click from:#submit-all">
+
+    <div class = "row">
+        <div class = "cold-4 col-md-4">
+            <label for ="{{ form.name.id_for_label}}"> {{form.question_text.label}}</label>
+            {{form.question_text}}
+        </div>
+
+        <div class = "col-3 align-self-end">
+            <button type = "button" class = "btn btn-danger"
+            hx-on="click: this.closest('form').remove()">Cancel</button>
+        </div>
+
+    </div>
+</form>

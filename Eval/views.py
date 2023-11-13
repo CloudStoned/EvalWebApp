@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView
 
 
+from .forms import AnswerForm,QuestionForm
 from .models import Author, Evaluation, Question, Choice, Answer
-from .forms import AnswerForm
 
 from django.views.generic import (
     ListView,DetailView, CreateView, UpdateView, DeleteView
@@ -67,5 +67,22 @@ def answer_evaluation(request, pk):
     return render(request, 'partials/submit_eval.html', context)
 
 
+class CreatePageListView(ListView):
+    model = Evaluation
+    template_name = 'createform.html'
+    context_object_name = 'evaluations'
+    # paginated_by = 5
+    
+def create_questions(request):
+    if request.method == 'POST':
+        form = QuestionForm(request.POST or None)
+        if form.is_valid:
+            question = form.save()
+            context = {
+                'question':question
+            }
+            return render(request, 'partials/questions.html',context)
+
+    return render(request, 'partials/form_questions_eval.html', {'form':QuestionForm()})
 
 
