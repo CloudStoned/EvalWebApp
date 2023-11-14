@@ -1,37 +1,34 @@
 from django import forms
 from . models import (
-    Author,Evaluation,Question,Choice,Answer
+    Evaluation,Answer
 )
+from .models import Evaluation, Question, Choice
 
-class AuthorNameForm(forms.ModelForm):
-    class Meta:
-        model = Author
-        fields = (
-            'name',
-        )
-
-class EvaluaionForm(forms.ModelForm):
+class EvaluationForm(forms.ModelForm):
     class Meta:
         model = Evaluation
-        fields = (
-            "eval_name",
-            "date_created"
-        )
+        fields = ['eval_name', 'date_created']
+        widgets = {
+            'eval_name': forms.TextInput(attrs={'class': 'form-control', 'style':'width: 300px;'}),
+            'date_created': forms.TextInput(attrs={'class': 'form-control', 'type': 'date', 'style':'width: 300px;'}),
+        }
 
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = (
-            "question_text",
-        )
+        fields = ['question_text']
+        widgets = {
+            'question_text':forms.TextInput(attrs={'class':'form-control', 'style':'width: 300px;'}),
+        }
 
 class ChoiceForm(forms.ModelForm):
     class Meta:
         model = Choice
-        fields = (
-            "choice_text",
-            "answers"
-        )
+        fields = ['choice_text']
+        widgets = {
+            'choice_text':forms.TextInput(attrs={'class':'form-control', 'style':'width: 300px;'}),
+        }
+
 
 class AnswerForm(forms.ModelForm):
     class Meta:

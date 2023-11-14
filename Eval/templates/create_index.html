@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Create Evaluation</h2>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="form-group">
+                <label for="{{ evalForm.eval_name.id_for_label }}">{{ evalForm.eval_name.label }}</label>
+                {{ evalForm.eval_name }}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="form-group">
+                <label for="{{ evalForm.date_created.id_for_label }}">{{ evalForm.date_created.label }}</label>
+                {{ evalForm.date_created }}
+            </div>
+        </div>
+    </div>
+
+    <div id="form-eval">
+        {% include 'partials/form_eval.html' %}
+    </div>
+
+    <div class="my-4">
+        <button type="button" class="btn btn-success me-2"
+        hx-get="{% url 'create-eval' %}"
+        hx-target="#form-eval"
+        hx-swap="beforeend"> + Add Questions </button.>
+    </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<form>
+    <div class="row">
+        <div class="col-md-6 mt-3">
+                <div class="form-group">
+                <label for="{{ questionForm.question_text.id_for_label }}">{{ questionForm.question_text.label }}</label>
+                {{ questionForm.question_text }}
+            </div>
+        </div>
+
+        <div class="col-md-6 mt-3">
+            <div class="form-group">
+                <label for="{{ choiceForm.choice_text.id_for_label }}">{{ choiceForm.choice_text.label }}</label>
+                {{ choiceForm.choice_text }}
+            </div>
+        </div>
+
+
+
+
+
+
+
+<!--
+    <div class="col-md-6 align-self-end">
+        <div class="text-md-right">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </div>
+-->
+    </div>
+</form>
